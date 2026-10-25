@@ -26,4 +26,4 @@ fi
 printf '%s\n' 'Trusting this CA for SSL in your login Keychain. macOS may request authorization.'
 /usr/bin/security add-trusted-cert -r trustRoot -p ssl \
     -k "$HOME/Library/Keychains/login.keychain-db" "$certificate_path"
-printf '%s\n' 'CA installed. Restart browsers if needed, then open https://searxng.com.'
+printf '%s\n' 'CA installed. Restart browsers if needed, then open https://searxng.test.'

@@ -1,8 +1,8 @@
-searxng.com {
+searxng.test {
     tls internal
     reverse_proxy searxng:8080
 }
 
-http://searxng.com, http://localhost {
-    redir https://searxng.com{uri} permanent
+http://searxng.test, http://localhost {
+    redir https://searxng.test{uri} permanent
 }

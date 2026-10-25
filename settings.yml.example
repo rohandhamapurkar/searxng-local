@@ -3,7 +3,7 @@ general:
   instance_name: 'SearXNG Local Test'
 server:
   secret_key: 'REPLACE_WITH_RANDOM_SECRET'
-  base_url: 'https://searxng.com/'
+  base_url: 'https://searxng.test/'
   limiter: false
   public_instance: false
 search:

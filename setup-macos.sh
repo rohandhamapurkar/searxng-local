@@ -16,4 +16,4 @@ bash "$script_dir/initialize.sh"
 sudo /bin/bash "$script_dir/set-local-host.sh"
 docker compose -f "$script_dir/compose.yaml" up -d
 bash "$script_dir/trust-local-ca.sh"
-printf '%s\n' 'Setup complete: https://searxng.com'
+printf '%s\n' 'Setup complete: https://searxng.test'
