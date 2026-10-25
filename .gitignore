@@ -1,0 +1,15 @@
+/config/
+/.env
+/.env.*
+!/.env.example
+*.crt
+*.pem
+*.key
+*.pfx
+*.p12
+*.cer
+*.log
+*.bak
+*.backup
+Thumbs.db
+.DS_Store
