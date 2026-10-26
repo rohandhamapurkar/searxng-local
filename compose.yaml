@@ -5,21 +5,11 @@ services:
     volumes:
       - ./config:/etc/searxng
       - searxng-data:/var/cache/searxng
+    networks:
+      - local-apps
     restart: unless-stopped
-  caddy:
-    image: docker.io/library/caddy:2-alpine
-    ports:
-      - '127.0.0.1:80:80'
-      - '127.0.0.1:443:443'
-      - '127.0.0.1:8888:80'
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy-data:/data
-      - caddy-config:/config
-    depends_on:
-      - searxng
-    restart: unless-stopped
+networks:
+  local-apps:
+    external: true
 volumes:
   searxng-data:
-  caddy-data:
-  caddy-config:
