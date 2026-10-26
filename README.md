@@ -8,13 +8,13 @@ The official SearXNG container, configured for local HTML and JSON searches at *
 - Git and PowerShell on Windows, or built-in Bash and OpenSSL on macOS.
 - [Caddy Local](https://github.com/rohandhamapurkar/caddy-local) initialized and running, with its local CA trusted and `searxng.test` mapped to localhost.
 
-Clone the repositories as siblings, for example `NodeJS/caddy-local`, `NodeJS/searxng`, and optionally `NodeJS/pihole`. Set up Caddy Local first to create the external `local-apps` network.
+Clone the repositories as siblings, for example `NodeJS/caddy-local`, `NodeJS/searxng-local`, and optionally `NodeJS/pihole-local`. Set up Caddy Local first to create the external `local-apps` network.
 
 ## Windows
 
 ```powershell
-git clone https://github.com/rohandhamapurkar/searxng-local.git searxng
-cd searxng
+git clone https://github.com/rohandhamapurkar/searxng-local.git searxng-local
+cd searxng-local
 powershell -NoProfile -ExecutionPolicy Bypass -File .\initialize.ps1
 docker compose up -d
 ```
@@ -24,8 +24,8 @@ docker compose up -d
 Install and launch Docker Desktop for your Mac. Set up Caddy Local with its `setup-macos.sh`, then:
 
 ```bash
-git clone https://github.com/rohandhamapurkar/searxng-local.git searxng
-cd searxng
+git clone https://github.com/rohandhamapurkar/searxng-local.git searxng-local
+cd searxng-local
 bash ./setup-macos.sh
 ```
 
