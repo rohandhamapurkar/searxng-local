@@ -2,6 +2,31 @@
 
 The official SearXNG container, configured for local HTML and JSON searches at **https://searxng.test**. This repository owns only SearXNG. Shared HTTPS, certificates, hosts helpers, and the Caddy container live in [Caddy Local](https://github.com/rohandhamapurkar/caddy-local).
 
+## Architecture
+
+```mermaid
+flowchart LR
+    Browser["Browser<br/>https://searxng.test"]
+
+    subgraph Network["Docker network: local-apps"]
+        Caddy["caddy-local<br/>Shared HTTPS proxy"]
+        Searxng["searxng-local<br/>SearXNG :8080"]
+    end
+
+    Engines["External search engines<br/>Enabled providers"]
+    Settings["Local config/settings.yml<br/>Instance settings and secret<br/>Ignored by Git"]
+    Cache[("searxng-data volume<br/>Persistent cache")]
+
+    Browser <-->|HTTPS on 127.0.0.1:443| Caddy
+    Caddy <-->|HTTP search requests and results| Searxng
+    Searxng <-->|Provider requests and results| Engines
+    Settings -.->|Mounted at /etc/searxng| Searxng
+    Searxng ---|/var/cache/searxng| Cache
+```
+
+The hosts file resolves `searxng.test` to localhost. Caddy handles certificates and routes the request to SearXNG, which queries enabled external engines and aggregates their results. SearXNG publishes no host port. Its container, settings, and cache are owned by this repository; the shared proxy and CA are owned by Caddy Local. HTTPS ends at Caddy, and queries remain visible to the upstream search providers.
+
+
 ## Requirements
 
 - Docker Desktop running Linux containers and Docker Compose.
